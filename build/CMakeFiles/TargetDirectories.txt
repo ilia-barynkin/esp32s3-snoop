@@ -864,3 +864,10 @@
 /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/CMakeFiles/install.dir
 /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/CMakeFiles/install/local.dir
 /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/CMakeFiles/install/strip.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/ui.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/edit_cache.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/rebuild_cache.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/list_install_components.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/install.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/install/local.dir
+/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/esp-idf/main/ui/CMakeFiles/install/strip.dir

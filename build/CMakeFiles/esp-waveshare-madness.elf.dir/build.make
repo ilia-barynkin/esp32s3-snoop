@@ -217,6 +217,7 @@ esp-waveshare-madness.elf: esp-idf/lvgl__lvgl/liblvgl__lvgl.a
 esp-waveshare-madness.elf: esp-idf/espressif__esp_lcd_touch_gt911/libespressif__esp_lcd_touch_gt911.a
 esp-waveshare-madness.elf: esp-idf/espressif__esp_lcd_touch/libespressif__esp_lcd_touch.a
 esp-waveshare-madness.elf: esp-idf/esp_lcd/libesp_lcd.a
+esp-waveshare-madness.elf: esp-idf/main/ui/libui.a
 esp-waveshare-madness.elf: esp-idf/xtensa/libxtensa.a
 esp-waveshare-madness.elf: esp-idf/esp_driver_gpio/libesp_driver_gpio.a
 esp-waveshare-madness.elf: esp-idf/esp_pm/libesp_pm.a

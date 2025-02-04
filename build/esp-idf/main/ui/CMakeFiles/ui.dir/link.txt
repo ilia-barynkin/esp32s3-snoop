@@ -1,0 +1,2 @@
+/home/bip/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libui.a CMakeFiles/ui.dir/screens/ui_Screen1.c.obj CMakeFiles/ui.dir/ui.c.obj CMakeFiles/ui.dir/components/ui_comp_hook.c.obj CMakeFiles/ui.dir/ui_helpers.c.obj CMakeFiles/ui.dir/ui_events.c.obj
+/home/bip/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libui.a

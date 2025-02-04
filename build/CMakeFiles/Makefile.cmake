@@ -236,6 +236,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/components/lvgl__lvgl/idf_component.yml"
   "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/main/CMakeLists.txt"
   "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/main/idf_component.yml"
+  "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/main/ui/CMakeLists.txt"
   "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/sdkconfig"
   "/usr/share/cmake/Modules/CMakeASMCompiler.cmake.in"
   "/usr/share/cmake/Modules/CMakeASMInformation.cmake"
@@ -528,6 +529,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "esp-idf/espressif__esp_lcd_touch/CMakeFiles/CMakeDirectoryInformation.cmake"
   "esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/CMakeDirectoryInformation.cmake"
   "esp-idf/main/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "esp-idf/main/ui/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -672,4 +674,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/DependInfo.cmake"
   "esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/DependInfo.cmake"
   "esp-idf/main/CMakeFiles/__idf_main.dir/DependInfo.cmake"
+  "esp-idf/main/ui/CMakeFiles/ui.dir/DependInfo.cmake"
   )

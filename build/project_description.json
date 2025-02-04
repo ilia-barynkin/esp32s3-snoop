@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "esp-waveshare-madness",
-    "project_version":    "5367dba-dirty",
+    "project_version":    "3f47a5f-dirty",
     "project_path":       "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness",
     "idf_path":           "/home/bip/esp/v5.4/esp-idf",
     "build_dir":          "/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build",

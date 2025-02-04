@@ -1981,6 +1981,19 @@ __idf_main/fast:
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/build
 .PHONY : __idf_main/fast
 
+#=============================================================================
+# Target rules for targets named ui
+
+# Build rule for target.
+ui: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ui
+.PHONY : ui
+
+# fast build rule for target.
+ui/fast:
+	$(MAKE) $(MAKESILENT) -f esp-idf/main/ui/CMakeFiles/ui.dir/build.make esp-idf/main/ui/CMakeFiles/ui.dir/build
+.PHONY : ui/fast
+
 project_elf_src_esp32s3.obj: project_elf_src_esp32s3.c.obj
 .PHONY : project_elf_src_esp32s3.obj
 
@@ -2157,6 +2170,7 @@ help:
 	@echo "... mbedtls"
 	@echo "... mbedx509"
 	@echo "... p256m"
+	@echo "... ui"
 	@echo "... project_elf_src_esp32s3.obj"
 	@echo "... project_elf_src_esp32s3.i"
 	@echo "... project_elf_src_esp32s3.s"

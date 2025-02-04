@@ -2176,19 +2176,41 @@ esp-idf/lwip/clean: esp-idf/lwip/CMakeFiles/__idf_lwip.dir/clean
 
 # Recursive "all" directory target.
 esp-idf/main/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
+esp-idf/main/all: esp-idf/main/ui/all
 .PHONY : esp-idf/main/all
 
 # Recursive "codegen" directory target.
 esp-idf/main/codegen: esp-idf/main/CMakeFiles/__idf_main.dir/codegen
+esp-idf/main/codegen: esp-idf/main/ui/codegen
 .PHONY : esp-idf/main/codegen
 
 # Recursive "preinstall" directory target.
-esp-idf/main/preinstall:
+esp-idf/main/preinstall: esp-idf/main/ui/preinstall
 .PHONY : esp-idf/main/preinstall
 
 # Recursive "clean" directory target.
 esp-idf/main/clean: esp-idf/main/CMakeFiles/__idf_main.dir/clean
+esp-idf/main/clean: esp-idf/main/ui/clean
 .PHONY : esp-idf/main/clean
+
+#=============================================================================
+# Directory level rules for directory esp-idf/main/ui
+
+# Recursive "all" directory target.
+esp-idf/main/ui/all: esp-idf/main/ui/CMakeFiles/ui.dir/all
+.PHONY : esp-idf/main/ui/all
+
+# Recursive "codegen" directory target.
+esp-idf/main/ui/codegen: esp-idf/main/ui/CMakeFiles/ui.dir/codegen
+.PHONY : esp-idf/main/ui/codegen
+
+# Recursive "preinstall" directory target.
+esp-idf/main/ui/preinstall:
+.PHONY : esp-idf/main/ui/preinstall
+
+# Recursive "clean" directory target.
+esp-idf/main/ui/clean: esp-idf/main/ui/CMakeFiles/ui.dir/clean
+.PHONY : esp-idf/main/ui/clean
 
 #=============================================================================
 # Directory level rules for directory esp-idf/mbedtls
@@ -2976,12 +2998,12 @@ CMakeFiles/save-defconfig.dir/clean:
 CMakeFiles/bootloader.dir/all: esp-idf/partition_table/CMakeFiles/partition_table_bin.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bootloader.dir/build.make CMakeFiles/bootloader.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bootloader.dir/build.make CMakeFiles/bootloader.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target bootloader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=89 "Built target bootloader"
 .PHONY : CMakeFiles/bootloader.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bootloader.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bootloader.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : CMakeFiles/bootloader.dir/rule
@@ -2993,7 +3015,7 @@ bootloader: CMakeFiles/bootloader.dir/rule
 # codegen rule for target.
 CMakeFiles/bootloader.dir/codegen: esp-idf/partition_table/CMakeFiles/partition_table_bin.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bootloader.dir/build.make CMakeFiles/bootloader.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target bootloader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=89 "Finished codegen for target bootloader"
 .PHONY : CMakeFiles/bootloader.dir/codegen
 
 # clean rule for target.
@@ -3008,7 +3030,7 @@ CMakeFiles/bootloader.dir/clean:
 CMakeFiles/gen_project_binary.dir/all: CMakeFiles/esp-waveshare-madness.elf.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gen_project_binary.dir/build.make CMakeFiles/gen_project_binary.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gen_project_binary.dir/build.make CMakeFiles/gen_project_binary.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target gen_project_binary"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=90 "Built target gen_project_binary"
 .PHONY : CMakeFiles/gen_project_binary.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3025,7 +3047,7 @@ gen_project_binary: CMakeFiles/gen_project_binary.dir/rule
 # codegen rule for target.
 CMakeFiles/gen_project_binary.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gen_project_binary.dir/build.make CMakeFiles/gen_project_binary.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target gen_project_binary"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=90 "Finished codegen for target gen_project_binary"
 .PHONY : CMakeFiles/gen_project_binary.dir/codegen
 
 # clean rule for target.
@@ -3112,7 +3134,7 @@ CMakeFiles/merge-bin.dir/all: CMakeFiles/gen_project_binary.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/merge-bin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 99
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 100
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/merge-bin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : CMakeFiles/merge-bin.dir/rule
@@ -3145,7 +3167,7 @@ CMakeFiles/monitor.dir/all: CMakeFiles/esp-waveshare-madness.elf.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/monitor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 99
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 98
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/monitor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : CMakeFiles/monitor.dir/rule
@@ -3179,7 +3201,7 @@ CMakeFiles/flash.dir/all: esp-idf/partition_table/CMakeFiles/partition_table_bin
 
 # Build rule for subdir invocation for target.
 CMakeFiles/flash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 99
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 100
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/flash.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : CMakeFiles/flash.dir/rule
@@ -3300,14 +3322,15 @@ CMakeFiles/esp-waveshare-madness.elf.dir/all: esp-idf/lvgl__lvgl/CMakeFiles/__id
 CMakeFiles/esp-waveshare-madness.elf.dir/all: esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/all
 CMakeFiles/esp-waveshare-madness.elf.dir/all: esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/all
 CMakeFiles/esp-waveshare-madness.elf.dir/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
+CMakeFiles/esp-waveshare-madness.elf.dir/all: esp-idf/main/ui/CMakeFiles/ui.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/esp-waveshare-madness.elf.dir/build.make CMakeFiles/esp-waveshare-madness.elf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/esp-waveshare-madness.elf.dir/build.make CMakeFiles/esp-waveshare-madness.elf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=90 "Built target esp-waveshare-madness.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target esp-waveshare-madness.elf"
 .PHONY : CMakeFiles/esp-waveshare-madness.elf.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/esp-waveshare-madness.elf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 99
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 98
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/esp-waveshare-madness.elf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : CMakeFiles/esp-waveshare-madness.elf.dir/rule
@@ -3319,7 +3342,7 @@ esp-waveshare-madness.elf: CMakeFiles/esp-waveshare-madness.elf.dir/rule
 # codegen rule for target.
 CMakeFiles/esp-waveshare-madness.elf.dir/codegen: CMakeFiles/_project_elf_src.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/esp-waveshare-madness.elf.dir/build.make CMakeFiles/esp-waveshare-madness.elf.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=90 "Finished codegen for target esp-waveshare-madness.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target esp-waveshare-madness.elf"
 .PHONY : CMakeFiles/esp-waveshare-madness.elf.dir/codegen
 
 # clean rule for target.
@@ -3436,7 +3459,7 @@ CMakeFiles/dfu.dir/all: CMakeFiles/gen_project_binary.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/dfu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 99
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 100
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/dfu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : CMakeFiles/dfu.dir/rule
@@ -3597,7 +3620,7 @@ esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all: esp-idf/esp_driver_gpio/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/rule
@@ -3629,7 +3652,7 @@ esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/all: esp-idf/esp_pm
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/rule
@@ -3661,7 +3684,7 @@ esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/all: esp-idf/mbedtls/CMakeFiles/__idf
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/rule
@@ -3693,7 +3716,7 @@ esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/all: esp-idf/mbedtls/mbedtls/3rdpar
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/rule
@@ -3789,7 +3812,7 @@ esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/all: esp-idf/mbe
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/rule
@@ -3821,7 +3844,7 @@ esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/all: esp-idf/mbedtl
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/rule
@@ -3848,12 +3871,12 @@ esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/clean:
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/all: esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=91,92,93,94,95,96,97 "Built target mbedcrypto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=91,92,93,94,95,96 "Built target mbedcrypto"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/rule
@@ -3865,7 +3888,7 @@ mbedcrypto: esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/rule
 # codegen rule for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=91,92,93,94,95,96,97 "Finished codegen for target mbedcrypto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=91,92,93,94,95,96 "Finished codegen for target mbedcrypto"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/codegen
 
 # clean rule for target.
@@ -3880,12 +3903,12 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/clean:
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/all: esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=99 "Built target mbedx509"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target mbedx509"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 51
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/rule
@@ -3897,7 +3920,7 @@ mbedx509: esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/rule
 # codegen rule for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=99 "Finished codegen for target mbedx509"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target mbedx509"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/codegen
 
 # clean rule for target.
@@ -3912,12 +3935,12 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/clean:
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/all: esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=98 "Built target mbedtls"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=97,98 "Built target mbedtls"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 51
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/rule
@@ -3929,7 +3952,7 @@ mbedtls: esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/rule
 # codegen rule for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/build.make esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=98 "Finished codegen for target mbedtls"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=97,98 "Finished codegen for target mbedtls"
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/codegen
 
 # clean rule for target.
@@ -3949,7 +3972,7 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/all: esp-idf/xtensa/CMakeFile
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/rule
@@ -3981,7 +4004,7 @@ esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/all: CMakeFiles/bootloader.di
 
 # Build rule for subdir invocation for target.
 esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/bootloader/CMakeFiles/bootloader-flash.dir/rule
@@ -4335,7 +4358,7 @@ esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/all: esp-idf/esp_boot
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/rule
@@ -4367,7 +4390,7 @@ esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/all: es
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/rule
@@ -4399,7 +4422,7 @@ esp-idf/app_update/CMakeFiles/__idf_app_update.dir/all: esp-idf/esp_partition/CM
 
 # Build rule for subdir invocation for target.
 esp-idf/app_update/CMakeFiles/__idf_app_update.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/app_update/CMakeFiles/__idf_app_update.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/app_update/CMakeFiles/__idf_app_update.dir/rule
@@ -4431,7 +4454,7 @@ esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/all: esp-idf/efuse/CMak
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/rule
@@ -4463,7 +4486,7 @@ esp-idf/efuse/CMakeFiles/__idf_efuse.dir/all: esp-idf/bootloader_support/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/efuse/CMakeFiles/__idf_efuse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/efuse/CMakeFiles/__idf_efuse.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/efuse/CMakeFiles/__idf_efuse.dir/rule
@@ -4650,12 +4673,12 @@ esp-idf/efuse/CMakeFiles/show-efuse-table.dir/clean:
 esp-idf/efuse/CMakeFiles/show_efuse_table.dir/all: esp-idf/efuse/CMakeFiles/show-efuse-table.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/efuse/CMakeFiles/show_efuse_table.dir/build.make esp-idf/efuse/CMakeFiles/show_efuse_table.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/efuse/CMakeFiles/show_efuse_table.dir/build.make esp-idf/efuse/CMakeFiles/show_efuse_table.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=100 "Built target show_efuse_table"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target show_efuse_table"
 .PHONY : esp-idf/efuse/CMakeFiles/show_efuse_table.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/efuse/CMakeFiles/show_efuse_table.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/efuse/CMakeFiles/show_efuse_table.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/efuse/CMakeFiles/show_efuse_table.dir/rule
@@ -4667,7 +4690,7 @@ show_efuse_table: esp-idf/efuse/CMakeFiles/show_efuse_table.dir/rule
 # codegen rule for target.
 esp-idf/efuse/CMakeFiles/show_efuse_table.dir/codegen: esp-idf/efuse/CMakeFiles/show-efuse-table.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/efuse/CMakeFiles/show_efuse_table.dir/build.make esp-idf/efuse/CMakeFiles/show_efuse_table.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=100 "Finished codegen for target show_efuse_table"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target show_efuse_table"
 .PHONY : esp-idf/efuse/CMakeFiles/show_efuse_table.dir/codegen
 
 # clean rule for target.
@@ -4719,7 +4742,7 @@ esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/all: esp-idf/
 
 # Build rule for subdir invocation for target.
 esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/rule
@@ -4751,7 +4774,7 @@ esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/all: esp-idf/spi_flash/CMakeFiles/__i
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 45
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/rule
@@ -4778,12 +4801,12 @@ esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/clean:
 esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/all: esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/build.make esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/build.make esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=78 "Built target __idf_spi_flash"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=77,78 "Built target __idf_spi_flash"
 .PHONY : esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 45
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 47
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/rule
@@ -4795,7 +4818,7 @@ __idf_spi_flash: esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/rule
 # codegen rule for target.
 esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/build.make esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=78 "Finished codegen for target __idf_spi_flash"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=77,78 "Finished codegen for target __idf_spi_flash"
 .PHONY : esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/codegen
 
 # clean rule for target.
@@ -4815,7 +4838,7 @@ esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/all: esp-idf/esp_common/CMake
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 44
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 45
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/rule
@@ -4842,12 +4865,12 @@ esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/clean:
 esp-idf/esp_system/CMakeFiles/memory.ld.dir/all:
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/memory.ld.dir/build.make esp-idf/esp_system/CMakeFiles/memory.ld.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/memory.ld.dir/build.make esp-idf/esp_system/CMakeFiles/memory.ld.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target memory.ld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=99 "Built target memory.ld"
 .PHONY : esp-idf/esp_system/CMakeFiles/memory.ld.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_system/CMakeFiles/memory.ld.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_system/CMakeFiles/memory.ld.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_system/CMakeFiles/memory.ld.dir/rule
@@ -4859,7 +4882,7 @@ memory.ld: esp-idf/esp_system/CMakeFiles/memory.ld.dir/rule
 # codegen rule for target.
 esp-idf/esp_system/CMakeFiles/memory.ld.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/memory.ld.dir/build.make esp-idf/esp_system/CMakeFiles/memory.ld.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target memory.ld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=99 "Finished codegen for target memory.ld"
 .PHONY : esp-idf/esp_system/CMakeFiles/memory.ld.dir/codegen
 
 # clean rule for target.
@@ -4934,7 +4957,7 @@ esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/espres
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build.make esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build.make esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=89 "Built target __ldgen_output_sections.ld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __ldgen_output_sections.ld"
 .PHONY : esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4979,7 +5002,7 @@ esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/codegen: esp-idf/es
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/codegen: esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/codegen: esp-idf/main/CMakeFiles/__idf_main.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build.make esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=89 "Finished codegen for target __ldgen_output_sections.ld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __ldgen_output_sections.ld"
 .PHONY : esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/codegen
 
 # clean rule for target.
@@ -4999,7 +5022,7 @@ esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/all: esp-idf/esp_rom/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/rule
@@ -5031,7 +5054,7 @@ esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/all: esp-idf/hal/CMakeFiles/__idf_h
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 41
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/rule
@@ -5063,7 +5086,7 @@ esp-idf/hal/CMakeFiles/__idf_hal.dir/all: esp-idf/log/CMakeFiles/__idf_log.dir/a
 
 # Build rule for subdir invocation for target.
 esp-idf/hal/CMakeFiles/__idf_hal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 39
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 40
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/hal/CMakeFiles/__idf_hal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/hal/CMakeFiles/__idf_hal.dir/rule
@@ -5090,12 +5113,12 @@ esp-idf/hal/CMakeFiles/__idf_hal.dir/clean:
 esp-idf/log/CMakeFiles/__idf_log.dir/all: esp-idf/heap/CMakeFiles/__idf_heap.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=34 "Built target __idf_log"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_log"
 .PHONY : esp-idf/log/CMakeFiles/__idf_log.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/log/CMakeFiles/__idf_log.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 35
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/log/CMakeFiles/__idf_log.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/log/CMakeFiles/__idf_log.dir/rule
@@ -5107,7 +5130,7 @@ __idf_log: esp-idf/log/CMakeFiles/__idf_log.dir/rule
 # codegen rule for target.
 esp-idf/log/CMakeFiles/__idf_log.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/log/CMakeFiles/__idf_log.dir/build.make esp-idf/log/CMakeFiles/__idf_log.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=34 "Finished codegen for target __idf_log"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_log"
 .PHONY : esp-idf/log/CMakeFiles/__idf_log.dir/codegen
 
 # clean rule for target.
@@ -5127,7 +5150,7 @@ esp-idf/heap/CMakeFiles/__idf_heap.dir/all: esp-idf/soc/CMakeFiles/__idf_soc.dir
 
 # Build rule for subdir invocation for target.
 esp-idf/heap/CMakeFiles/__idf_heap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/heap/CMakeFiles/__idf_heap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/heap/CMakeFiles/__idf_heap.dir/rule
@@ -5154,12 +5177,12 @@ esp-idf/heap/CMakeFiles/__idf_heap.dir/clean:
 esp-idf/soc/CMakeFiles/__idf_soc.dir/all: esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=76,77 "Built target __idf_soc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=75,76 "Built target __idf_soc"
 .PHONY : esp-idf/soc/CMakeFiles/__idf_soc.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/soc/CMakeFiles/__idf_soc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/soc/CMakeFiles/__idf_soc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/soc/CMakeFiles/__idf_soc.dir/rule
@@ -5171,7 +5194,7 @@ __idf_soc: esp-idf/soc/CMakeFiles/__idf_soc.dir/rule
 # codegen rule for target.
 esp-idf/soc/CMakeFiles/__idf_soc.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=76,77 "Finished codegen for target __idf_soc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=75,76 "Finished codegen for target __idf_soc"
 .PHONY : esp-idf/soc/CMakeFiles/__idf_soc.dir/codegen
 
 # clean rule for target.
@@ -5191,7 +5214,7 @@ esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/all: esp-idf/esp_hw_suppo
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 34
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_security/CMakeFiles/__idf_esp_security.dir/rule
@@ -5223,7 +5246,7 @@ esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/all: esp-idf/freertos
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 34
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/rule
@@ -5255,7 +5278,7 @@ esp-idf/freertos/CMakeFiles/__idf_freertos.dir/all: esp-idf/newlib/CMakeFiles/__
 
 # Build rule for subdir invocation for target.
 esp-idf/freertos/CMakeFiles/__idf_freertos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 30
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/freertos/CMakeFiles/__idf_freertos.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/freertos/CMakeFiles/__idf_freertos.dir/rule
@@ -5282,12 +5305,12 @@ esp-idf/freertos/CMakeFiles/__idf_freertos.dir/clean:
 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/all: esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/newlib/CMakeFiles/__idf_newlib.dir/build.make esp-idf/newlib/CMakeFiles/__idf_newlib.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/newlib/CMakeFiles/__idf_newlib.dir/build.make esp-idf/newlib/CMakeFiles/__idf_newlib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=71 "Built target __idf_newlib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=70,71 "Built target __idf_newlib"
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 27
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 29
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/rule
@@ -5299,7 +5322,7 @@ __idf_newlib: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/rule
 # codegen rule for target.
 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/newlib/CMakeFiles/__idf_newlib.dir/build.make esp-idf/newlib/CMakeFiles/__idf_newlib.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=71 "Finished codegen for target __idf_newlib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=70,71 "Finished codegen for target __idf_newlib"
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/codegen
 
 # clean rule for target.
@@ -5314,12 +5337,12 @@ esp-idf/newlib/CMakeFiles/__idf_newlib.dir/clean:
 esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all: esp-idf/cxx/CMakeFiles/__idf_cxx.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/pthread/CMakeFiles/__idf_pthread.dir/build.make esp-idf/pthread/CMakeFiles/__idf_pthread.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/pthread/CMakeFiles/__idf_pthread.dir/build.make esp-idf/pthread/CMakeFiles/__idf_pthread.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_pthread"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=74 "Built target __idf_pthread"
 .PHONY : esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/pthread/CMakeFiles/__idf_pthread.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 26
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/pthread/CMakeFiles/__idf_pthread.dir/rule
@@ -5331,7 +5354,7 @@ __idf_pthread: esp-idf/pthread/CMakeFiles/__idf_pthread.dir/rule
 # codegen rule for target.
 esp-idf/pthread/CMakeFiles/__idf_pthread.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/pthread/CMakeFiles/__idf_pthread.dir/build.make esp-idf/pthread/CMakeFiles/__idf_pthread.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_pthread"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=74 "Finished codegen for target __idf_pthread"
 .PHONY : esp-idf/pthread/CMakeFiles/__idf_pthread.dir/codegen
 
 # clean rule for target.
@@ -5511,7 +5534,7 @@ esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/all: esp-idf/xtensa/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/rule
@@ -5730,7 +5753,7 @@ esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/clean:
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/all: esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/build.make esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/build.make esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=75 "Built target __idf_sdmmc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_sdmmc"
 .PHONY : esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5747,7 +5770,7 @@ __idf_sdmmc: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/rule
 # codegen rule for target.
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/build.make esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=75 "Finished codegen for target __idf_sdmmc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_sdmmc"
 .PHONY : esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/codegen
 
 # clean rule for target.
@@ -5767,7 +5790,7 @@ esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/all: esp-idf/esp_
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/rule
@@ -5799,7 +5822,7 @@ esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/all: esp-idf/esp_
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/rule
@@ -5831,7 +5854,7 @@ esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/all: esp-idf/esp_driv
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/rule
@@ -5863,7 +5886,7 @@ esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/all: esp-idf/esp_
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/rule
@@ -5895,7 +5918,7 @@ esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/all: esp-idf/esp_driv
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/rule
@@ -5927,7 +5950,7 @@ esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/all: esp-idf/esp_driv
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/rule
@@ -5959,7 +5982,7 @@ esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/all: esp-idf/esp_dr
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/rule
@@ -5991,7 +6014,7 @@ esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.d
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.dir/rule
@@ -6023,7 +6046,7 @@ esp-idf/driver/CMakeFiles/__idf_driver.dir/all: esp-idf/esp_phy/CMakeFiles/__idf
 
 # Build rule for subdir invocation for target.
 esp-idf/driver/CMakeFiles/__idf_driver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/driver/CMakeFiles/__idf_driver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/driver/CMakeFiles/__idf_driver.dir/rule
@@ -6055,7 +6078,7 @@ esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/all: esp-idf/esp_vfs_console/CMakeF
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/rule
@@ -6087,7 +6110,7 @@ esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/all: esp-idf/vfs/CM
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/rule
@@ -6114,12 +6137,12 @@ esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/clean:
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/all: esp-idf/lwip/CMakeFiles/__idf_lwip.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/vfs/CMakeFiles/__idf_vfs.dir/build.make esp-idf/vfs/CMakeFiles/__idf_vfs.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/vfs/CMakeFiles/__idf_vfs.dir/build.make esp-idf/vfs/CMakeFiles/__idf_vfs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_vfs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=81 "Built target __idf_vfs"
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/rule
@@ -6131,7 +6154,7 @@ __idf_vfs: esp-idf/vfs/CMakeFiles/__idf_vfs.dir/rule
 # codegen rule for target.
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/vfs/CMakeFiles/__idf_vfs.dir/build.make esp-idf/vfs/CMakeFiles/__idf_vfs.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_vfs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=81 "Finished codegen for target __idf_vfs"
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/codegen
 
 # clean rule for target.
@@ -6146,7 +6169,7 @@ esp-idf/vfs/CMakeFiles/__idf_vfs.dir/clean:
 esp-idf/lwip/CMakeFiles/__idf_lwip.dir/all: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build.make esp-idf/lwip/CMakeFiles/__idf_lwip.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build.make esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=63,64,65,66,67,68,69 "Built target __idf_lwip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=63,64,65,66,67,68 "Built target __idf_lwip"
 .PHONY : esp-idf/lwip/CMakeFiles/__idf_lwip.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6163,7 +6186,7 @@ __idf_lwip: esp-idf/lwip/CMakeFiles/__idf_lwip.dir/rule
 # codegen rule for target.
 esp-idf/lwip/CMakeFiles/__idf_lwip.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build.make esp-idf/lwip/CMakeFiles/__idf_lwip.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=63,64,65,66,67,68,69 "Finished codegen for target __idf_lwip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=63,64,65,66,67,68 "Finished codegen for target __idf_lwip"
 .PHONY : esp-idf/lwip/CMakeFiles/__idf_lwip.dir/codegen
 
 # clean rule for target.
@@ -6183,7 +6206,7 @@ esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all: esp-idf/wpa_supplicant/CMa
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/rule
@@ -6215,7 +6238,7 @@ esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/all: esp-idf/esp_coex
 
 # Build rule for subdir invocation for target.
 esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/rule
@@ -6247,7 +6270,7 @@ esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/all: esp-idf/esp_wifi/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/rule
@@ -6279,7 +6302,7 @@ esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/all: esp-idf/http_parser/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/rule
@@ -6311,7 +6334,7 @@ esp-idf/unity/CMakeFiles/__idf_unity.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xt
 
 # Build rule for subdir invocation for target.
 esp-idf/unity/CMakeFiles/__idf_unity.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/unity/CMakeFiles/__idf_unity.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/unity/CMakeFiles/__idf_unity.dir/rule
@@ -6344,7 +6367,7 @@ esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all: esp-idf/unity/CMakeFiles/__idf_uni
 
 # Build rule for subdir invocation for target.
 esp-idf/cmock/CMakeFiles/__idf_cmock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/cmock/CMakeFiles/__idf_cmock.dir/rule
@@ -6376,7 +6399,7 @@ esp-idf/console/CMakeFiles/__idf_console.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/console/CMakeFiles/__idf_console.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/console/CMakeFiles/__idf_console.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/console/CMakeFiles/__idf_console.dir/rule
@@ -6403,12 +6426,12 @@ esp-idf/console/CMakeFiles/__idf_console.dir/clean:
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/build.make esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/build.make esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=33 "Built target __idf_http_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_http_parser"
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/rule
@@ -6420,7 +6443,7 @@ __idf_http_parser: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/rule
 # codegen rule for target.
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/build.make esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=33 "Finished codegen for target __idf_http_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_http_parser"
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/codegen
 
 # clean rule for target.
@@ -6440,7 +6463,7 @@ esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all: esp-idf/esp_adc/CMakeFiles/__i
 
 # Build rule for subdir invocation for target.
 esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/rule
@@ -6472,7 +6495,7 @@ esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/all: esp-idf/esp_gdbstub/CMakeFiles
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/rule
@@ -6504,7 +6527,7 @@ esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/all: esp-idf/xtensa/C
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/rule
@@ -6536,7 +6559,7 @@ esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir/rule
@@ -6568,7 +6591,7 @@ esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all: esp-idf/tcp_transport/
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/rule
@@ -6600,7 +6623,7 @@ esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/rule
@@ -6627,12 +6650,12 @@ esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/clean:
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all: esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build.make esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build.make esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_tcp_transport"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=79 "Built target __idf_tcp_transport"
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/rule
@@ -6644,7 +6667,7 @@ __idf_tcp_transport: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/ru
 # codegen rule for target.
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build.make esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_tcp_transport"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=79 "Finished codegen for target __idf_tcp_transport"
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/codegen
 
 # clean rule for target.
@@ -6664,7 +6687,7 @@ esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/esp_ht
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/rule
@@ -6696,7 +6719,7 @@ esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all: esp-idf/esp_ht
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/rule
@@ -6728,7 +6751,7 @@ esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/esp_psram/
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/rule
@@ -6760,7 +6783,7 @@ esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/all: esp-idf/xten
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/rule
@@ -6794,7 +6817,7 @@ esp-idf/esp_psram/CMakeFiles/__idf_esp_psram.dir/all: esp-idf/esp_system/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_psram/CMakeFiles/__idf_esp_psram.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_psram/CMakeFiles/__idf_esp_psram.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_psram/CMakeFiles/__idf_esp_psram.dir/rule
@@ -6826,7 +6849,7 @@ esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/rule
@@ -6858,7 +6881,7 @@ esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all: esp-idf/xtensa/CMakeFile
 
 # Build rule for subdir invocation for target.
 esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/rule
@@ -6887,12 +6910,12 @@ esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/all: esp-idf/console/CMakeFiles
 esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/all: esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/build.make esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/build.make esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=74 "Built target __idf_protocomm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=73 "Built target __idf_protocomm"
 .PHONY : esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 60
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 61
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/rule
@@ -6904,7 +6927,7 @@ __idf_protocomm: esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/rule
 # codegen rule for target.
 esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/build.make esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=74 "Finished codegen for target __idf_protocomm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=73 "Finished codegen for target __idf_protocomm"
 .PHONY : esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/codegen
 
 # clean rule for target.
@@ -6928,7 +6951,7 @@ esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/all: esp-idf/protocom
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 61
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 62
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/rule
@@ -6960,7 +6983,7 @@ esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/all: esp-idf/xtensa/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/rule
@@ -6992,7 +7015,7 @@ esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all: esp-idf/xtensa/C
 
 # Build rule for subdir invocation for target.
 esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/rule
@@ -7025,7 +7048,7 @@ esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all: esp-idf/wear_levelling/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/rule
@@ -7052,12 +7075,12 @@ esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/clean:
 esp-idf/json/CMakeFiles/__idf_json.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/json/CMakeFiles/__idf_json.dir/build.make esp-idf/json/CMakeFiles/__idf_json.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/json/CMakeFiles/__idf_json.dir/build.make esp-idf/json/CMakeFiles/__idf_json.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_json"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=33 "Built target __idf_json"
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/json/CMakeFiles/__idf_json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/json/CMakeFiles/__idf_json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/rule
@@ -7069,7 +7092,7 @@ __idf_json: esp-idf/json/CMakeFiles/__idf_json.dir/rule
 # codegen rule for target.
 esp-idf/json/CMakeFiles/__idf_json.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/json/CMakeFiles/__idf_json.dir/build.make esp-idf/json/CMakeFiles/__idf_json.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_json"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=33 "Finished codegen for target __idf_json"
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/codegen
 
 # clean rule for target.
@@ -7084,7 +7107,7 @@ esp-idf/json/CMakeFiles/__idf_json.dir/clean:
 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build.make esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build.make esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=70 "Built target __idf_mqtt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_mqtt"
 .PHONY : esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7101,7 +7124,7 @@ __idf_mqtt: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/rule
 # codegen rule for target.
 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build.make esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=70 "Finished codegen for target __idf_mqtt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_mqtt"
 .PHONY : esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/codegen
 
 # clean rule for target.
@@ -7121,7 +7144,7 @@ esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/all: esp-idf/xten
 
 # Build rule for subdir invocation for target.
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/rule
@@ -7148,7 +7171,7 @@ esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/clean:
 esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/build.make esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/build.make esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=73 "Built target __idf_perfmon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_perfmon"
 .PHONY : esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7165,7 +7188,7 @@ __idf_perfmon: esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/rule
 # codegen rule for target.
 esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/build.make esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=73 "Finished codegen for target __idf_perfmon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_perfmon"
 .PHONY : esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/codegen
 
 # clean rule for target.
@@ -7185,7 +7208,7 @@ esp-idf/rt/CMakeFiles/__idf_rt.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.d
 
 # Build rule for subdir invocation for target.
 esp-idf/rt/CMakeFiles/__idf_rt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/rt/CMakeFiles/__idf_rt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/rt/CMakeFiles/__idf_rt.dir/rule
@@ -7212,7 +7235,7 @@ esp-idf/rt/CMakeFiles/__idf_rt.dir/clean:
 esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/build.make esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/build.make esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=79 "Built target __idf_spiffs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_spiffs"
 .PHONY : esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7229,7 +7252,7 @@ __idf_spiffs: esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/rule
 # codegen rule for target.
 esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/build.make esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=79 "Finished codegen for target __idf_spiffs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_spiffs"
 .PHONY : esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/codegen
 
 # clean rule for target.
@@ -7249,7 +7272,7 @@ esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/all: esp-idf/xtensa/CMa
 
 # Build rule for subdir invocation for target.
 esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/rule
@@ -7276,7 +7299,7 @@ esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/clean:
 esp-idf/usb/CMakeFiles/__idf_usb.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/usb/CMakeFiles/__idf_usb.dir/build.make esp-idf/usb/CMakeFiles/__idf_usb.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/usb/CMakeFiles/__idf_usb.dir/build.make esp-idf/usb/CMakeFiles/__idf_usb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=81 "Built target __idf_usb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_usb"
 .PHONY : esp-idf/usb/CMakeFiles/__idf_usb.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7293,7 +7316,7 @@ __idf_usb: esp-idf/usb/CMakeFiles/__idf_usb.dir/rule
 # codegen rule for target.
 esp-idf/usb/CMakeFiles/__idf_usb.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/usb/CMakeFiles/__idf_usb.dir/build.make esp-idf/usb/CMakeFiles/__idf_usb.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=81 "Finished codegen for target __idf_usb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_usb"
 .PHONY : esp-idf/usb/CMakeFiles/__idf_usb.dir/codegen
 
 # clean rule for target.
@@ -7317,7 +7340,7 @@ esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/all: esp-idf/js
 
 # Build rule for subdir invocation for target.
 esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 61
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 63
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/rule
@@ -7344,12 +7367,12 @@ esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/clean:
 esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/build.make esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/build.make esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Built target __idf_lvgl__lvgl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Built target __idf_lvgl__lvgl"
 .PHONY : esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 85
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 87
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/rule
@@ -7361,7 +7384,7 @@ __idf_lvgl__lvgl: esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/rule
 # codegen rule for target.
 esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/build.make esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Finished codegen for target __idf_lvgl__lvgl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Finished codegen for target __idf_lvgl__lvgl"
 .PHONY : esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/codegen
 
 # clean rule for target.
@@ -7382,7 +7405,7 @@ esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/a
 
 # Build rule for subdir invocation for target.
 esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/rule
@@ -7416,7 +7439,7 @@ esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch
 
 # Build rule for subdir invocation for target.
 esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 58
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/rule
@@ -7468,14 +7491,15 @@ esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/wifi_provisioning/CMakeFiles
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/lvgl__lvgl/CMakeFiles/__idf_lvgl__lvgl.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/espressif__esp_lcd_touch/CMakeFiles/__idf_espressif__esp_lcd_touch.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/espressif__esp_lcd_touch_gt911/CMakeFiles/__idf_espressif__esp_lcd_touch_gt911.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/main/ui/CMakeFiles/ui.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Built target __idf_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=69 "Built target __idf_main"
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/main/CMakeFiles/__idf_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 97
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 98
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/main/CMakeFiles/__idf_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/rule
@@ -7487,13 +7511,45 @@ __idf_main: esp-idf/main/CMakeFiles/__idf_main.dir/rule
 # codegen rule for target.
 esp-idf/main/CMakeFiles/__idf_main.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num= "Finished codegen for target __idf_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=69 "Finished codegen for target __idf_main"
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/codegen
 
 # clean rule for target.
 esp-idf/main/CMakeFiles/__idf_main.dir/clean:
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/clean
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/clean
+
+#=============================================================================
+# Target rules for target esp-idf/main/ui/CMakeFiles/ui.dir
+
+# All Build rule for target.
+esp-idf/main/ui/CMakeFiles/ui.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
+	$(MAKE) $(MAKESILENT) -f esp-idf/main/ui/CMakeFiles/ui.dir/build.make esp-idf/main/ui/CMakeFiles/ui.dir/depend
+	$(MAKE) $(MAKESILENT) -f esp-idf/main/ui/CMakeFiles/ui.dir/build.make esp-idf/main/ui/CMakeFiles/ui.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=100 "Built target ui"
+.PHONY : esp-idf/main/ui/CMakeFiles/ui.dir/all
+
+# Build rule for subdir invocation for target.
+esp-idf/main/ui/CMakeFiles/ui.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 59
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/main/ui/CMakeFiles/ui.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles 0
+.PHONY : esp-idf/main/ui/CMakeFiles/ui.dir/rule
+
+# Convenience name for target.
+ui: esp-idf/main/ui/CMakeFiles/ui.dir/rule
+.PHONY : ui
+
+# codegen rule for target.
+esp-idf/main/ui/CMakeFiles/ui.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f esp-idf/main/ui/CMakeFiles/ui.dir/build.make esp-idf/main/ui/CMakeFiles/ui.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/bip/repos/lvgl_porting_esp_idf_project/esp-waveshare-madness/build/CMakeFiles --progress-num=100 "Finished codegen for target ui"
+.PHONY : esp-idf/main/ui/CMakeFiles/ui.dir/codegen
+
+# clean rule for target.
+esp-idf/main/ui/CMakeFiles/ui.dir/clean:
+	$(MAKE) $(MAKESILENT) -f esp-idf/main/ui/CMakeFiles/ui.dir/build.make esp-idf/main/ui/CMakeFiles/ui.dir/clean
+.PHONY : esp-idf/main/ui/CMakeFiles/ui.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

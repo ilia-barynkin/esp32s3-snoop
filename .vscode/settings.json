@@ -1,4 +1,16 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
-  "idf.port": "/dev/ttyACM0"
+  "idf.port": "/dev/ttyACM0",
+  "files.associations": {
+    "freertosconfig.h": "c",
+    "waveshare_rgb_lcd_port.h": "c",
+    "freertos.h": "c",
+    "lvgl_port.h": "c",
+    "lvgl.h": "c",
+    "ui_helpers.h": "c",
+    "ui.h": "c",
+    "esp_lcd_touch.h": "c",
+    "lv_log.h": "c",
+    "lv_timer.h": "c"
+  }
 }
