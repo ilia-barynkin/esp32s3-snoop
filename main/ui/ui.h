@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-#include <lvgl.h>
+#include "../../components/lvgl__lvgl/lvgl.h"
 
-#include "ui_helpers.h"
+#include "ui_helpers.h"adasfadasf
 #include "ui_events.h"
 
 // SCREEN: ui_Screen1

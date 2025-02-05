@@ -6,4 +6,4 @@ SET(SOURCES screens/ui_Screen1.c
 
 add_library(ui STATIC ${SOURCES})
 
-target_include_directories(ui PUBLIC $(PROJECT_SOURCE_DIR)/components/lvgl__lvgl)
+target_include_directories(ui PUBLIC ${PROJECT_SOURCE_DIR}/components/lvgl__lvgl)
