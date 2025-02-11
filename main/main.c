@@ -11,13 +11,11 @@
 // TODO: replace
 
 void view_task(void* pvParameters) {
-    waveshare_esp32_s3_rgb_lcd_init();
-
     if (lvgl_port_lock(-1)) {
-        ui_init();
-        
+        // waveshare_esp32_s3_rgb_lcd_init();
+        // ui_init();
+
         while(1) {
-            ESP_LOGI("FreeRTOS", "UI main task");
             vTaskDelay(pdMS_TO_TICKS(10));
         }
 
@@ -27,16 +25,20 @@ void view_task(void* pvParameters) {
 
 QueueHandle_t model_event_queue;
 
+
 void app_main()
 {
+    waveshare_esp32_s3_rgb_lcd_init();
+    ui_init();
+
     //queues
     if(!(model_event_queue = xQueueCreate(MODEL_QUEUE_SIZE, sizeof(model_event_t)))) {
-        ESP_LOGE("Model", "Failed to create model event queue");
-        abort();
+       ESP_LOGE("Model", "Failed to create model event queue");
+       abort();
     };
     
     //tasks
-    xTaskCreate(view_task, "view_task", 2048, NULL, 5, NULL);
+    xTaskCreate(view_task, "view_task", 4096, NULL, 5, NULL);
     xTaskCreate(model_task, "model_task", 2048, NULL, 5, NULL);
     xTaskCreate(uart_controller_task, "uart_controller_task", 2048, NULL, 5, NULL);
 }

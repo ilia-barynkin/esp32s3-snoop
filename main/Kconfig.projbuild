@@ -150,10 +150,5 @@ menu "UART Configuration"
         help
             Set the baud rate for UART communication.
     
-    config UART_NUM
-        string "UART Port Number"
-        default "UART_NUM_1"
-        help
-            Set the UART port number (e.g., UART_NUM_0, UART_NUM_1, etc.).
+endmenu
     
-endmenu    

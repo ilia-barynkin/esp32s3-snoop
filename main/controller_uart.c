@@ -21,9 +21,9 @@ void uart_controller_init(void) {
 #endif
 
     // Install UART driver 
-    ESP_ERROR_CHECK(uart_driver_install(CONFIG_UART_NUM, CONFIG_UART_BUF_SZ * 2, 0, 0, NULL, intr_alloc_flags));
-    ESP_ERROR_CHECK(uart_param_config(CONFIG_UART_NUM, &uart_config));
-    ESP_ERROR_CHECK(uart_set_pin(CONFIG_UART_NUM, CONFIG_UART_TX_PIN, CONFIG_UART_RX_PIN UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));  // Set UART pins 
+    ESP_ERROR_CHECK(uart_driver_install(UART_NUM_1, CONFIG_UART_BUF_SZ * 2, 0, 0, NULL, intr_alloc_flags));
+    ESP_ERROR_CHECK(uart_param_config(UART_NUM_1, &uart_config));
+    ESP_ERROR_CHECK(uart_set_pin(UART_NUM_1, CONFIG_UART_TX_PIN, CONFIG_UART_RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));  // Set UART pins 
 }
 
 uart_message_t* uart_message_alloc(void) {
@@ -41,10 +41,10 @@ void uart_controller_task(void *pvParameters) {
     
     while (1) {
         if (xQueueReceive(uart_tx_queue, &message, portMAX_DELAY) == pdPASS) {
-            uart_write_bytes(CONFIG_UART_NUM, (const char *)message.data, message.length);
+            uart_write_bytes(UART_NUM_1, (const char *)message.data, message.length);
         }
-        
-        int length = uart_read_bytes(CONFIG_UART_NUM, data, sizeof(data), pdMS_TO_TICKS(100));
+
+        int length = uart_read_bytes(UART_NUM_1, data, sizeof(data), pdMS_TO_TICKS(100));
 
         if (length > 0) {
             uart_message_t *response = uart_message_alloc();

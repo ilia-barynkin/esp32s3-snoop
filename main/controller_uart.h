@@ -5,8 +5,8 @@
 #include "driver/uart.h"
 #include "driver/gpio.h"
 
-QueueHandle_t uart_tx_queue;
-QueueHandle_t uart_rx_queue;
+extern QueueHandle_t uart_tx_queue;
+extern QueueHandle_t uart_rx_queue;
 
 typedef struct {
     uint32_t length;
