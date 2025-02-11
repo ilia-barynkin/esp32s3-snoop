@@ -1,5 +1,5 @@
 idf_component_register(
-    SRCS "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c"
+    SRCS "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "model.c"
     INCLUDE_DIRS ".")
 
 add_subdirectory(ui)
