@@ -6,6 +6,7 @@
 
 #include "main.h"
 #include "model.h"
+#include "controller_uart.h"
 
 // TODO: replace
 
@@ -24,25 +25,6 @@ void view_task(void* pvParameters) {
     }
 }
 
-// TODO: replace
-
-void uart_controller_task(void *pvParameters) {
-    uart_message_t message;
-    uint8_t data[128];
-    while (1) {
-        if (xQueueReceive(uart_tx_queue, &message, portMAX_DELAY) == pdPASS) {
-            uart_write_bytes(UART_NUM_1, (const char *)message.data, message.length);
-        }
-        int length = uart_read_bytes(UART_NUM_1, data, sizeof(data), pdMS_TO_TICKS(100));
-        if (length > 0) {
-            uart_message_t response;
-            memcpy(response.data, data, length);
-            response.length = length;
-            xQueueSend(uart_rx_queue, &response, portMAX_DELAY);
-        }
-    }
-}
-
 QueueHandle_t model_event_queue;
 
 void app_main()
@@ -56,4 +38,5 @@ void app_main()
     //tasks
     xTaskCreate(view_task, "view_task", 2048, NULL, 5, NULL);
     xTaskCreate(model_task, "model_task", 2048, NULL, 5, NULL);
+    xTaskCreate(uart_controller_task, "uart_controller_task", 2048, NULL, 5, NULL);
 }

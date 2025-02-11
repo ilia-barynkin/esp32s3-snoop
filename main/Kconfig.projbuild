@@ -122,3 +122,38 @@ menu "Example Configuration"
                 Height of LVGL buffer. The width of the buffer is the same as that of the LCD.
     endmenu
 endmenu
+
+
+menu "UART Configuration"
+
+    config UART_BUF_SZ
+        int "UART Buffer Size"
+        default 256
+        help
+            Set the buffer size for UART communication.
+    
+    config UART_RX_PIN
+        int "UART RX Pin"
+        default 44
+        help
+            Define the GPIO pin number for UART RX.
+    
+    config UART_TX_PIN
+        int "UART TX Pin"
+        default 43
+        help
+            Define the GPIO pin number for UART TX.
+    
+    config UART_BAUD_RATE
+        int "UART Baud Rate"
+        default 115200
+        help
+            Set the baud rate for UART communication.
+    
+    config UART_NUM
+        string "UART Port Number"
+        default "UART_NUM_1"
+        help
+            Set the UART port number (e.g., UART_NUM_0, UART_NUM_1, etc.).
+    
+endmenu    
