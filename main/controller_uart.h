@@ -10,12 +10,10 @@ extern QueueHandle_t uart_rx_queue;
 
 typedef struct {
     uint32_t length;
-    void* data;
+    uint8_t *data;
 } uart_message_t;
-
-uart_message_t* uart_message_alloc(void);
 
 void uart_controller_init(void);
 void uart_controller_task(void *pvParameters);
 
-#endif _CONTROLLER_UART_H
+#endif //_CONTROLLER_UART_H

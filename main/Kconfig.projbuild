@@ -151,4 +151,23 @@ menu "UART Configuration"
             Set the baud rate for UART communication.
     
 endmenu
+
+menu "WS Can Config"
+
+    config CAN_TX_GPIO_NUM
+        int "CAN TX GPIO number"
+        default 21
+        help
+            This option selects the GPIO pin used for the TX signal. Connect the
+            TX signal to your transceiver.
+
+    config CAN_RX_GPIO_NUM
+        int "CAN RX GPIO number"
+        default 22
+        help
+            This option selects the GPIO pin used for the RX signal. Connect the
+            RX signal to your transceiver.
+
+endmenu
+
     

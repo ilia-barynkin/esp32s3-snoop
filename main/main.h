@@ -2,12 +2,13 @@
 #define _MAIN_H_
 
 #include "sdkconfig.h"
+#include "inttypes.h"
 #include "esp_log.h"
 #include "esp_err.h"
+#include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "waveshare_rgb_lcd_port.h"
-#include "ui/ui.h"
 
-#endif _MAIN_H_
+#endif //_MAIN_H_

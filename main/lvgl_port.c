@@ -14,6 +14,7 @@
 #include "esp_log.h"
 #include "lvgl.h"
 #include "lvgl_port.h"
+#include "ui/ui.h"
 
 static const char *TAG = "lv_port";                      // Tag for logging
 static SemaphoreHandle_t lvgl_mux;                       // LVGL mutex for synchronization
@@ -485,6 +486,7 @@ static esp_err_t tick_init(void)
 
 static void lvgl_port_task(void *arg)
 {
+    ui_init();
     ESP_LOGD(TAG, "Starting LVGL task"); // Log the task start
 
     uint32_t task_delay_ms = LVGL_PORT_TASK_MAX_DELAY_MS; // Set initial task delay

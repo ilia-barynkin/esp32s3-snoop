@@ -19,7 +19,7 @@ void model_task(void* pvParameters) {
                     current_state = (event.success) ? STATE_IDLE : STATE_ERROR;
                     break;
                 case STATE_ERROR:
-                    ESP_LOGI("Model task", "Error");
+                    ESP_LOGI(TAG, "Error");
                     current_state = STATE_IDLE;
                     break;
             }
