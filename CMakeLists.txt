@@ -5,4 +5,5 @@
 cmake_minimum_required(VERSION 3.5)
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 add_compile_options("-Wno-attributes")
-project(esp-waveshare-madness)
+set(EXTRA_COMPONENT_DIRS components)
+project(lvgl_doom)

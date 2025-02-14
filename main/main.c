@@ -38,5 +38,5 @@ void app_main()
     //xTaskCreate(view_task, "view_task", 4096, NULL, 5, NULL);
     xTaskCreate(model_task, "model_task", 8192, NULL, 5, NULL);
     //xTaskCreate(uart_controller_task, "uart_controller_task", 8192, NULL, 5, NULL);
-    //xTaskCreate(controller_can_task, "controller_can_task", 8192, NULL, 5, NULL);
+    xTaskCreate(controller_can_task, "controller_can_task", 8192, NULL, 5, NULL);
 }

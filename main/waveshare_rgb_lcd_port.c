@@ -33,7 +33,8 @@ static esp_err_t i2c_master_init(void)
     i2c_param_config(i2c_master_port, &i2c_conf);
 
     // Install I2C driver
-    return i2c_driver_install(i2c_master_port, i2c_conf.mode, 0, 0, 0);
+    //return i2c_driver_install(i2c_master_port, i2c_conf.mode, 0, 0, 0);
+    return i2c_driver_install(i2c_master_port, i2c_conf.mode,  0, 0, 0);
 }
 
 // GPIO initialization
@@ -73,6 +74,8 @@ void waveshare_esp32_s3_touch_reset()
 // Initialize RGB LCD
 esp_err_t waveshare_esp32_s3_rgb_lcd_init()
 {
+    i2c_master_init();
+    wavesahre_rgb_lcd_en_can();
     ESP_LOGI(TAG, "Install RGB LCD panel driver"); // Log the start of the RGB LCD panel driver installation
     esp_lcd_panel_handle_t panel_handle = NULL; // Declare a handle for the LCD panel
     esp_lcd_rgb_panel_config_t panel_config = {
@@ -134,7 +137,6 @@ esp_err_t waveshare_esp32_s3_rgb_lcd_init()
     esp_lcd_touch_handle_t tp_handle = NULL; // Declare a handle for the touch panel
 #if CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_GT911
     ESP_LOGI(TAG, "Initialize I2C bus"); // Log the initialization of the I2C bus
-    i2c_master_init(); // Initialize the I2C master
     ESP_LOGI(TAG, "Initialize GPIO"); // Log GPIO initialization
     gpio_init(); // Initialize GPIO pins
     ESP_LOGI(TAG, "Initialize Touch LCD"); // Log touch LCD initialization
@@ -205,6 +207,26 @@ esp_err_t wavesahre_rgb_lcd_bl_off()
     i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     return ESP_OK;
 }
+
+esp_err_t wavesahre_rgb_lcd_en_can()
+{
+    uint8_t write_buf = 0x01;
+    esp_err_t err = i2c_master_write_to_device(I2C_MASTER_NUM, 0x24, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to write to I2C device: %s", esp_err_to_name(err));
+    }
+
+    write_buf = 0x20;
+    err = i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to write to I2C device: %s", esp_err_to_name(err));
+    }
+
+    return ESP_OK;
+}
+
 
 /******************************* Example code **************************************/
 static void draw_event_cb(lv_event_t *e) // Draw event callback function 
