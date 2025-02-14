@@ -3,9 +3,23 @@
 // LVGL version: 8.3.11
 // Project name: SquareLine_Project
 
-#include "ui.h"3
+#include "ui.h"
+#include "../mvc_helpers.h"
+#include "../ring_buffer.h"
+#include "esp_log.h"
+extern transaction_ring_buffer_t transaction_ring_buffer;
+extern QueueHandle_t can_tx_queue;
 
 void clickme_fn(lv_event_t * e)
 {
-	// Your code here
+	uint8_t data[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+	ESP_LOGI("UI", "clickme_fn");
+	//send_can_msg(0x123, data, 8, e);
+	uint32_t id = 0x123;
+	uint8_t raw_msg[8 + sizeof(uint32_t)];
+    memcpy(raw_msg, &id, sizeof(uint32_t));
+    memcpy(raw_msg + sizeof(uint32_t), data, 8);
+    ring_buffer_add(&transaction_ring_buffer, id, e);
+    ESP_LOGI("CAN", "Sending CAN message: %lu", id);
+    SEND_TO_QUEUE(can_tx_queue, raw_msg);
 }

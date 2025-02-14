@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "driver/twai.h"
+#include "ring_buffer.h"
 
 #define TEST_CAN_LOOPBACK
 
@@ -14,6 +15,11 @@ typedef struct {
     uint32_t message_id;
     bool success;
 } can_tx_status_t;
+
+typedef struct {
+    twai_message_t message;
+    void *ui_event_ref;
+} can_extended_message_t;
 
 //extern twai_general_config_t g_config;
 //extern twai_timing_config_t t_config;

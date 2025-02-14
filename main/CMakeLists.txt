@@ -1,5 +1,5 @@
 idf_component_register(
-    SRCS "controller_can.c" "controller_uart.c" "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "model.c"
+    SRCS "controller_can.c" "controller_uart.c" "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "ring_buffer.c"
     INCLUDE_DIRS "."
     REQUIRES driver)
 

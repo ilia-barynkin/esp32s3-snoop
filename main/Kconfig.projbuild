@@ -170,4 +170,14 @@ menu "WS Can Config"
 
 endmenu
 
+menu "Transactions ring buffer size"
+
+    config RING_BUFFER_SIZE
+        int "Transactions ring buffer size"
+        default 10
+        help
+            Set the size of the transactions ring buffer.
+    
+endmenu
+
     
