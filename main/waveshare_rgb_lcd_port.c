@@ -16,9 +16,9 @@ IRAM_ATTR static bool rgb_lcd_on_vsync_event(esp_lcd_panel_handle_t panel, const
 /**
  * @brief I2C master initialization
  */
-static esp_err_t i2c_master_init(void)
+static esp_err_t i2c_ws_init(void)
 {
-    int i2c_master_port = I2C_MASTER_NUM;
+    int i2c_master_port = 0;
 
     i2c_config_t i2c_conf = {
         .mode = I2C_MODE_MASTER,
@@ -52,20 +52,23 @@ void gpio_init(void)
     gpio_config(&io_conf);
 }
 
+#define I2C_ADDR_CH422G 0x24
+#define I2C_ADDR_MYSTERIOUS 0x38 // i have no idea what this i2c device is
+
 // Reset the touch screen
 void waveshare_esp32_s3_touch_reset()
 {
     uint8_t write_buf = 0x01;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x24, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_CH422G, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
     // Reset the touch screen. It is recommended to reset the touch screen before using it.
     write_buf = 0x2C;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     esp_rom_delay_us(100 * 1000);
     gpio_set_level(GPIO_INPUT_IO_4, 0);
     esp_rom_delay_us(100 * 1000);
     write_buf = 0x2E;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     esp_rom_delay_us(200 * 1000);
 }
 
@@ -74,7 +77,7 @@ void waveshare_esp32_s3_touch_reset()
 // Initialize RGB LCD
 esp_err_t waveshare_esp32_s3_rgb_lcd_init()
 {
-    i2c_master_init();
+    i2c_ws_init();
     wavesahre_rgb_lcd_en_can();
     ESP_LOGI(TAG, "Install RGB LCD panel driver"); // Log the start of the RGB LCD panel driver installation
     esp_lcd_panel_handle_t panel_handle = NULL; // Declare a handle for the LCD panel
@@ -187,11 +190,11 @@ esp_err_t wavesahre_rgb_lcd_bl_on()
 {
     //Configure CH422G to output mode 
     uint8_t write_buf = 0x01;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x24, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_CH422G, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
     //Pull the backlight pin high to light the screen backlight 
     write_buf = 0x1E;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     return ESP_OK;
 }
 
@@ -200,25 +203,25 @@ esp_err_t wavesahre_rgb_lcd_bl_off()
 {
     //Configure CH422G to output mode 
     uint8_t write_buf = 0x01;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x24, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_CH422G, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
     //Turn off the screen backlight by pulling the backlight pin low 
     write_buf = 0x1A;
-    i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     return ESP_OK;
 }
 
 esp_err_t wavesahre_rgb_lcd_en_can()
 {
     uint8_t write_buf = 0x01;
-    esp_err_t err = i2c_master_write_to_device(I2C_MASTER_NUM, 0x24, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    esp_err_t err = i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_CH422G, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to write to I2C device: %s", esp_err_to_name(err));
     }
 
     write_buf = 0x20;
-    err = i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    err = i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to write to I2C device: %s", esp_err_to_name(err));

@@ -1,6 +1,6 @@
 idf_component_register(
-    SRCS "controller_can.c" "controller_uart.c" "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "ring_buffer.c"
-    INCLUDE_DIRS "."
+    SRCS "port_ch422g.c" "controller_can.c" "controller_uart.c" "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "ring_buffer.c" "model.c"
+    INCLUDE_DIRS "." "./ui"
     REQUIRES driver)
 
 add_subdirectory(ui)

@@ -5,15 +5,15 @@
  */
 
 #include "main.h"
-#include "controller_uart.h"
 #include "controller_can.h"
 #include "waveshare_rgb_lcd_port.h"
-
-// TODO: replace
+#include "model.h"
+#include "i2c_periph.h"
 
 void app_main()
 {
     waveshare_esp32_s3_rgb_lcd_init();
     
-    xTaskCreate(controller_can_task, "controller_can_task", 8192, NULL, 5, NULL);
+    model_start();
+    controller_can_start();
 }

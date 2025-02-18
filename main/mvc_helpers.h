@@ -7,8 +7,6 @@
 #include "memory.h"
 #include "esp_log.h"
 
-extern transaction_ring_buffer_t transaction_ring_buffer;
-
 #define SEND_TO_QUEUE(queue, item) \
 do { \
     if (xQueueSend(queue, &item, portMAX_DELAY) != pdPASS) { \
@@ -18,6 +16,7 @@ do { \
 
 // extern QueueHandle_t can_tx_queue;
 
+// extern transaction_ring_buffer_t transaction_ring_buffer;
 // inline void send_can_msg(uint32_t id, uint8_t *data, uint8_t len, void *ui_event) {
 //     uint8_t raw_msg[8 + sizeof(uint32_t)];
 //     memcpy(raw_msg, &id, sizeof(uint32_t));

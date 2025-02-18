@@ -1,11 +1,41 @@
 #include "controller_can.h"
-#include "ring_buffer.h"
+#include "model.h"
+#include "ui/ui_model_bridge.h"
 
 QueueHandle_t can_tx_queue = NULL;
 QueueHandle_t can_tx_status_queue = NULL;
 QueueHandle_t can_rx_queue = NULL;
 
-extern transaction_ring_buffer_t transaction_ring_buffer;
+static void log_twai_status() {
+    twai_status_info_t status;
+    esp_err_t err = twai_get_status_info(&status);
+
+    if (err != ESP_OK) {
+        ESP_LOGE("TWAI", "Failed to get TWAI status, error: %d", err);
+        return;
+    }
+
+    ESP_LOGI("TWAI", " ==== TWAI Status: ==== ");
+    if (status.state >= TWAI_STATE_STOPPED && status.state <= TWAI_STATE_RECOVERING) {
+        const char *state_str = (status.state == TWAI_STATE_STOPPED) ? "STOPPED" :
+                                (status.state == TWAI_STATE_RUNNING) ? "RUNNING" :
+                                (status.state == TWAI_STATE_BUS_OFF) ? "BUS OFF" :
+                                (status.state == TWAI_STATE_RECOVERING) ? "RECOVERING" : "UNKNOWN";
+        ESP_LOGI("TWAI", "  State: %s", state_str);
+    } else {
+        ESP_LOGW("TWAI", "  State: UNKNOWN");
+    }
+
+    ESP_LOGI("TWAI", "  Msgs to TX: %lu", status.msgs_to_tx);
+    ESP_LOGI("TWAI", "  Msgs to RX: %lu", status.msgs_to_rx);
+    ESP_LOGI("TWAI", "  TX ERR: %lu, RX ERR: %lu", status.tx_error_counter, status.rx_error_counter);
+    ESP_LOGI("TWAI", "  TX Failed: %lu", status.tx_failed_count);
+    ESP_LOGI("TWAI", "  RX Missed: %lu", status.rx_missed_count);
+    ESP_LOGI("TWAI", "  RX Overrun: %lu", status.rx_overrun_count);
+    ESP_LOGI("TWAI", "  Arb Lost: %lu", status.arb_lost_count);
+    ESP_LOGI("TWAI", "  Bus Error: %lu", status.bus_error_count);
+    ESP_LOGI("TWAI", " ==== TWAI Status: ==== ");
+}
 
 static void controller_can_init(void) {
 #ifdef TEST_CAN_LOOPBACK
@@ -13,8 +43,10 @@ static void controller_can_init(void) {
 #else
     twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(19, 20, TWAI_MODE_NORMAL);
 #endif
-    twai_timing_config_t t_config = TWAI_TIMING_CONFIG_250KBITS(); // Скорость 500 кбит/с
-    twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL(); // Принимать все сообщения
+    twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS();
+    twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
+
+    uint32_t alerts_to_enable = TWAI_ALERT_TX_IDLE | TWAI_ALERT_TX_SUCCESS | TWAI_ALERT_TX_FAILED | TWAI_ALERT_ERR_PASS | TWAI_ALERT_BUS_ERROR;
 
     // Install TWAI driver
     esp_err_t err = twai_driver_install(&g_config, &t_config, &f_config);
@@ -31,43 +63,93 @@ static void controller_can_init(void) {
     if (err != ESP_OK) {
         ESP_LOGE("CAN", "Failed to start TWAI driver %s", esp_err_to_name(err));
     }
+    else {
+        ESP_LOGI("CAN", "TWAI driver started");
+    }
 
-    ring_buffer_init(&transaction_ring_buffer);
+    err = twai_reconfigure_alerts(alerts_to_enable, NULL);
+    if (err == ESP_OK)
+    {
+        ESP_LOGI("CAN", "CAN Alerts reconfigured"); // Log alerts reconfigured
+    }
+    else
+    {
+        ESP_LOGE("CAN", "Failed to reconfigure CAN alerts %s", esp_err_to_name(err));
+    }
 }
 
-void controller_can_task(void *pvParameters) {
-    controller_can_init();
-
+void controller_can_tx_task(void *pvParameters) {
     can_extended_message_t ext_message;
     can_tx_status_t tx_status;
+    ESP_LOGI("CAN", "CAN task started");
 
     while (1) {
-        ESP_LOGI("CAN", "CAN task started");
         if (xQueueReceive(can_tx_queue, &ext_message, portMAX_DELAY) == pdPASS) {
-            ESP_LOGI("CAN_TX", "Received message ID=0x%lu", ext_message.message.identifier);
-#ifdef TEST_CAN_LOOPBACK
-            ext_message.message.flags = TWAI_MSG_FLAG_SELF;
-#endif
-            esp_err_t err = twai_transmit(&ext_message.message, portMAX_DELAY);
-            if (err == ESP_OK) {
-                tx_status.message_id = ext_message.message.identifier;
-                tx_status.success = true;
-                SEND_TO_QUEUE(can_tx_status_queue, tx_status);
-            }
-            else {
-                tx_status.message_id = ext_message.message.identifier;
-                tx_status.success = false;
-                ESP_LOGE("CAN TX error", "ID=0x%lu %s", ext_message.message.identifier, esp_err_to_name(err));
-                SEND_TO_QUEUE(can_tx_status_queue, tx_status);
-            }
-        }
+            log_twai_status();
 
-        if (twai_receive(&ext_message.message, portMAX_DELAY) == ESP_OK) {
-            void *ui_event_ref = ring_buffer_find_and_remove(&transaction_ring_buffer, ext_message.message.identifier);
-            if (ui_event_ref) {
-                ext_message.ui_event_ref = ui_event_ref;
-            }
-            SEND_TO_QUEUE(can_rx_queue, ext_message);
+            twai_message_t msg = {
+                .identifier = ext_message.identifier,
+                .data_length_code = ext_message.data_length_code,
+                #ifdef TEST_CAN_LOOPBACK
+                .flags = TWAI_MSG_FLAG_SELF,
+                #endif
+                .flags = TWAI_MSG_FLAG_NONE
+            };
+
+            memcpy(msg.data, ext_message.data, ext_message.data_length_code);
+
+            ESP_LOGI("CAN_TX", "Sending message ID=0x%lu", ext_message.identifier);
+            esp_err_t err = twai_transmit(&msg, pdMS_TO_TICKS(1000));
+            tx_status.message_id = msg.identifier;
+            tx_status.status = err;
+            xQueueSend(can_tx_status_queue, &tx_status, portMAX_DELAY);
         }
     }
+}
+
+void can_tx_status_task(void *pvParameters) {
+    can_tx_status_t tx_status;
+    while (1) {
+        if (xQueueReceive(can_tx_status_queue, &tx_status, portMAX_DELAY) == pdPASS) {
+            uint32_t alerts;
+            twai_read_alerts(&alerts, portMAX_DELAY);
+            switch (alerts) {
+                case TWAI_ALERT_ERR_PASS:
+                    ESP_LOGI("CAN", "TWAI Error Passive Alert");
+                    break;
+                case TWAI_ALERT_BUS_ERROR:
+                    ESP_LOGI("CAN", "TWAI Bus Error Alert");
+                    break;
+                case TWAI_ALERT_TX_FAILED:
+                    ESP_LOGI("CAN", "TWAI TX Failed Alert");
+                    break;
+                case TWAI_ALERT_TX_SUCCESS:
+                    ESP_LOGI("CAN", "TWAI TX Success Alert");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+void controller_can_rx_task(void *pvParameters) {
+    twai_message_t received_msg;
+    can_extended_message_t ext_msg;
+    while (1) {
+        if (twai_receive(&received_msg, portMAX_DELAY) == ESP_OK) {
+            ESP_LOGI("CAN RX", "CAN message received ID=0x%lu", received_msg.identifier);
+            ext_msg.identifier = received_msg.identifier;
+            ext_msg.data_length_code = received_msg.data_length_code;
+            memcpy(ext_msg.data, received_msg.data, received_msg.data_length_code);
+            notify_model_can_response(&ext_msg);
+        }
+    }
+}
+
+void controller_can_start(void) {
+    controller_can_init();
+    xTaskCreate(controller_can_tx_task, "controller_can_tx_task", 4096, NULL, 5, NULL);
+    xTaskCreate(can_tx_status_task, "can_tx_status_task", 4096, NULL, 5, NULL);
+    xTaskCreate(controller_can_rx_task, "controller_can_rx_task", 4096, NULL, 5, NULL);
 }
