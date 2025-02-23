@@ -51,7 +51,7 @@ static void controller_can_init(void) {
     twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS();
     twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
 
-    uint32_t alerts_to_enable = TWAI_ALERT_TX_IDLE | TWAI_ALERT_TX_SUCCESS | TWAI_ALERT_TX_FAILED | TWAI_ALERT_ERR_PASS | TWAI_ALERT_BUS_ERROR;
+    uint32_t alerts_to_enable = TWAI_ALERT_TX_IDLE | TWAI_ALERT_TX_SUCCESS | TWAI_ALERT_RX_DATA | TWAI_ALERT_BELOW_ERR_WARN | TWAI_ALERT_ERR_ACTIVE | TWAI_ALERT_RECOVERY_IN_PROGRESS | TWAI_ALERT_BUS_RECOVERED | TWAI_ALERT_ARB_LOST | TWAI_ALERT_ABOVE_ERR_WARN | TWAI_ALERT_BUS_ERROR | TWAI_ALERT_TX_FAILED | TWAI_ALERT_RX_QUEUE_FULL | TWAI_ALERT_ERR_PASS | TWAI_ALERT_BUS_OFF | TWAI_ALERT_RX_FIFO_OVERRUN | TWAI_ALERT_TX_RETRIED | TWAI_ALERT_PERIPH_RESET | TWAI_ALERT_ALL | TWAI_ALERT_NONE | TWAI_ALERT_AND_LOG;
 
     // Install TWAI driver
     esp_err_t err = twai_driver_install(&g_config, &t_config, &f_config);
@@ -95,7 +95,7 @@ void controller_can_tx_task(void *pvParameters) {
             #ifdef TEST_CAN_LOOPBACK
             msg.flags = TWAI_MSG_FLAG_SELF;
             #else
-            msg.flags = TWAI_MSG_FLAG_NONE;
+            msg.flags = TWAI_MSG_FLAG_EXTD;
             #endif
 
             ESP_LOGI("CAN_TX", "Sending message ID=0x%lu", msg.identifier);
@@ -141,11 +141,28 @@ void can_tx_status_task(void *pvParameters) {
     }
 }
 
+void log_twai_msg(twai_message_t *msg) {
+    ESP_LOGI("CAN_MSG", "Message ID=0x%lu", msg->identifier);
+    ESP_LOGI("CAN_MSG", "Data:");
+    for (int i = 0; i < msg->data_length_code; i++) {
+        ESP_LOGI("CAN_MSG", "0x%02x", msg->data[i]);
+    }
+
+    // flags
+    ESP_LOGI("CAN_MSG", "Flags: %s", msg->flags == TWAI_MSG_FLAG_EXTD ? "Extended" : "Standard");
+    ESP_LOGI("CAN_MSG", "Remote Transmission Request: %s", msg->flags & TWAI_MSG_FLAG_RTR ? "Yes" : "No");
+    ESP_LOGI("CAN_MSG", "Self Reception Request: %s", msg->flags & TWAI_MSG_FLAG_SELF ? "Yes" : "No");
+    ESP_LOGI("CAN_MSG", "Single Shot Transmission: %s", msg->flags & TWAI_MSG_FLAG_SS ? "Yes" : "No");
+    ESP_LOGI("CAN_MSG", "DLC Non-Compliant: %s", msg->flags & TWAI_MSG_FLAG_DLC_NON_COMP ? "Yes" : "No");
+}
+
 void controller_can_rx_task(void *pvParameters) {
     twai_message_t received_msg;
     while (1) {
         if (twai_receive(&received_msg, portMAX_DELAY) == ESP_OK) {
+            
             ESP_LOGI("CAN RX", "CAN message received ID=0x%lu", received_msg.identifier);
+            log_twai_msg(&received_msg);
             notify_model_can_response(&received_msg);
         }
     }
