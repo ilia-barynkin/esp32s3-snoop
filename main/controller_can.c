@@ -41,10 +41,12 @@ static void log_twai_status() {
 //#define TEST_CAN_LOOPBACK
 
 static void controller_can_init(void) {
+    esp_io_expander_ch422g_set_all_output(ch422g_handle);
+    esp_io_expander_set_level(ch422g_handle, 0x20, 1);
 #ifdef TEST_CAN_LOOPBACK
-    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(19, 20, TWAI_MODE_NO_ACK);
+    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(21, 22, TWAI_MODE_NO_ACK);
 #else
-    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(20, 21, TWAI_MODE_NORMAL);
+    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(20, 19, TWAI_MODE_NORMAL);
 #endif
     twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS();
     twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
@@ -97,8 +99,15 @@ void controller_can_tx_task(void *pvParameters) {
             #endif
 
             ESP_LOGI("CAN_TX", "Sending message ID=0x%lu", msg.identifier);
+            esp_io_expander_ch422g_set_all_output(ch422g_handle);
             esp_io_expander_set_level(ch422g_handle, 0x20, 1);
             esp_err_t err = twai_transmit(&msg, pdMS_TO_TICKS(1000));
+            if (err != ESP_OK) {
+                ESP_LOGE("CAN_TX", "Failed to send message ID=0x%lu: %s", msg.identifier, esp_err_to_name(err));
+            }
+            else {
+                ESP_LOGI("CAN_TX", "Message ID=0x%lu sent successfully", msg.identifier);
+            }
             tx_status.message_id = msg.identifier;
             tx_status.status = err;
             xQueueSend(can_tx_status_queue, &tx_status, portMAX_DELAY);

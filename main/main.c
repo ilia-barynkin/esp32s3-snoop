@@ -14,8 +14,19 @@
 #include "ui/ui.h"
 #include "ui/ui_events.h"
 
-#define TWAI_TEST 
+//#define TWAI_TEST 
 
+
+void exio_test_task(void *pvParameters) {
+    while (1) {
+        static bool flag = false;
+        flag = !flag;
+        //esp_io_expander_ch422g_set_all_output(ch422g_handle);
+        esp_io_expander_set_level(ch422g_handle, 0x20, flag ? 0 : 1); 
+        //ESP_LOGI("exio_test_task", "flag: %d", flag);
+        vTaskDelay(1000);
+    }
+}
 
 void app_main()
 {
@@ -24,7 +35,7 @@ void app_main()
     model_start();
     controller_can_start();
 
-    /*#ifdef TWAI_TEST
-    xTaskCreate(twai_test_task, "twai_test_task", 4096, NULL, 5, NULL);
-    #endif*/
+    #ifdef TWAI_TEST
+    xTaskCreate(exio_test_task, "exio_test_task", 4096, NULL, 5, NULL);
+    #endif
 }

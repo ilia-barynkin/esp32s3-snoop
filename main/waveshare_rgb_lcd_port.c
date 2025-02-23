@@ -96,7 +96,7 @@ void waveshare_esp32_s3_touch_reset()
 esp_err_t waveshare_esp32_s3_rgb_lcd_init()
 {
     i2c_ws_init();
-    wavesahre_rgb_lcd_en_can();
+    //wavesahre_rgb_lcd_en_can();
     waveshare_esp32_s3_touch_reset();
     ESP_LOGI(TAG, "Install RGB LCD panel driver"); // Log the start of the RGB LCD panel driver installation
     esp_lcd_panel_handle_t panel_handle = NULL; // Declare a handle for the LCD panel
