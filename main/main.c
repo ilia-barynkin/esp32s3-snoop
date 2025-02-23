@@ -8,7 +8,14 @@
 #include "controller_can.h"
 #include "waveshare_rgb_lcd_port.h"
 #include "model.h"
-#include "i2c_periph.h"
+//#include "i2c_periph.h"
+#include "driver/gpio.h"
+
+#include "ui/ui.h"
+#include "ui/ui_events.h"
+
+#define TWAI_TEST 
+
 
 void app_main()
 {
@@ -16,4 +23,8 @@ void app_main()
     
     model_start();
     controller_can_start();
+
+    /*#ifdef TWAI_TEST
+    xTaskCreate(twai_test_task, "twai_test_task", 4096, NULL, 5, NULL);
+    #endif*/
 }

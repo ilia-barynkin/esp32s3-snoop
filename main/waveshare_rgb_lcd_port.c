@@ -12,13 +12,26 @@ IRAM_ATTR static bool rgb_lcd_on_vsync_event(esp_lcd_panel_handle_t panel, const
     return lvgl_port_notify_rgb_vsync();
 }
 
+#define I2C_ADDR_CH422G 0x24
+#define EXIO_1 (1 << 1)
+#define EXIO_TP_RST EXIO_1
+#define EXIO_2 (1 << 2)
+#define EXIO_DISP EXIO_2
+#define EXIO_3 (1 << 3)
+#define EXIO_LCD_RST EXIO_3
+#define EXIO_4 (1 << 4)
+#define EXIO_SD_CS EXIO_4
+#define EXIO_5 (1 << 5)
+#define EXIO_USB_SEL EXIO_5
+
 #if CONFIG_EXAMPLE_LCD_TOUCH_CONTROLLER_GT911
 /**
  * @brief I2C master initialization
  */
+
+uint32_t exio_state;
 static esp_err_t i2c_ws_init(void)
 {
-    int i2c_master_port = 0;
 
     i2c_config_t i2c_conf = {
         .mode = I2C_MODE_MASTER,
@@ -30,11 +43,19 @@ static esp_err_t i2c_ws_init(void)
     };
 
     // Configure I2C parameters
-    i2c_param_config(i2c_master_port, &i2c_conf);
+    i2c_param_config(I2C_MASTER_NUM, &i2c_conf);
 
     // Install I2C driver
     //return i2c_driver_install(i2c_master_port, i2c_conf.mode, 0, 0, 0);
-    return i2c_driver_install(i2c_master_port, i2c_conf.mode,  0, 0, 0);
+    i2c_driver_install(I2C_MASTER_NUM, i2c_conf.mode,  0, 0, 0);
+
+    esp_io_expander_new_i2c_ch422g(I2C_MASTER_NUM, ESP_IO_EXPANDER_I2C_CH422G_ADDRESS, &ch422g_handle);
+    esp_io_expander_reset(ch422g_handle);
+    esp_io_expander_ch422g_set_all_output(ch422g_handle);
+    //esp_io_expander_print_state(ch422g_handle);
+    //esp_io_expander_get_level(ch422g_handle, 0xFFFF, &exio_state);
+
+    return ESP_OK;
 }
 
 // GPIO initialization
@@ -52,9 +73,6 @@ void gpio_init(void)
     gpio_config(&io_conf);
 }
 
-#define I2C_ADDR_CH422G 0x24
-#define I2C_ADDR_MYSTERIOUS 0x38 // i have no idea what this i2c device is
-
 // Reset the touch screen
 void waveshare_esp32_s3_touch_reset()
 {
@@ -63,12 +81,12 @@ void waveshare_esp32_s3_touch_reset()
 
     // Reset the touch screen. It is recommended to reset the touch screen before using it.
     write_buf = 0x2C;
-    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, CH422G_REG_RD_IO, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     esp_rom_delay_us(100 * 1000);
     gpio_set_level(GPIO_INPUT_IO_4, 0);
     esp_rom_delay_us(100 * 1000);
     write_buf = 0x2E;
-    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, CH422G_REG_RD_IO, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     esp_rom_delay_us(200 * 1000);
 }
 
@@ -79,6 +97,7 @@ esp_err_t waveshare_esp32_s3_rgb_lcd_init()
 {
     i2c_ws_init();
     wavesahre_rgb_lcd_en_can();
+    waveshare_esp32_s3_touch_reset();
     ESP_LOGI(TAG, "Install RGB LCD panel driver"); // Log the start of the RGB LCD panel driver installation
     esp_lcd_panel_handle_t panel_handle = NULL; // Declare a handle for the LCD panel
     esp_lcd_rgb_panel_config_t panel_config = {
@@ -143,7 +162,7 @@ esp_err_t waveshare_esp32_s3_rgb_lcd_init()
     ESP_LOGI(TAG, "Initialize GPIO"); // Log GPIO initialization
     gpio_init(); // Initialize GPIO pins
     ESP_LOGI(TAG, "Initialize Touch LCD"); // Log touch LCD initialization
-    waveshare_esp32_s3_touch_reset(); // Reset the touch panel
+    //waveshare_esp32_s3_touch_reset(); // Reset the touch panel
 
     esp_lcd_panel_io_handle_t tp_io_handle = NULL; // Declare a handle for touch panel I/O
     const esp_lcd_panel_io_i2c_config_t tp_io_config = ESP_LCD_TOUCH_IO_I2C_GT911_CONFIG(); // Configure I2C for GT911 touch controller
@@ -182,7 +201,7 @@ esp_err_t waveshare_esp32_s3_rgb_lcd_init()
     };
     ESP_ERROR_CHECK(esp_lcd_rgb_panel_register_event_callbacks(panel_handle, &cbs, NULL)); // Register event callbacks
 
-    return ESP_OK; // Return success 
+     return ESP_OK; // Return success 
 }
 
 /******************************* Turn on the screen backlight **************************************/
@@ -194,7 +213,7 @@ esp_err_t wavesahre_rgb_lcd_bl_on()
 
     //Pull the backlight pin high to light the screen backlight 
     write_buf = 0x1E;
-    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, CH422G_REG_RD_IO, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     return ESP_OK;
 }
 
@@ -207,25 +226,21 @@ esp_err_t wavesahre_rgb_lcd_bl_off()
 
     //Turn off the screen backlight by pulling the backlight pin low 
     write_buf = 0x1A;
-    i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    i2c_master_write_to_device(I2C_MASTER_NUM, CH422G_REG_RD_IO, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     return ESP_OK;
 }
 
 esp_err_t wavesahre_rgb_lcd_en_can()
 {
-    uint8_t write_buf = 0x01;
-    esp_err_t err = i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_CH422G, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to write to I2C device: %s", esp_err_to_name(err));
-    }
+    // When USB_SEL is HIGH, it enables FSUSB42UMX chip and gpio19,gpio20 wired CAN_TX CAN_RX, and then dont use USB Function
+    // uint8_t write_buf = 0x01;
+    // i2c_master_write_to_device(I2C_MASTER_NUM, 0x24, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
-    write_buf = 0x20;
-    err = i2c_master_write_to_device(I2C_MASTER_NUM, I2C_ADDR_MYSTERIOUS, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    // write_buf = 0x20;
+    // i2c_master_write_to_device(I2C_MASTER_NUM, 0x38, &write_buf, 1, I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to write to I2C device: %s", esp_err_to_name(err));
-    }
+    
 
     return ESP_OK;
 }
@@ -262,33 +277,4 @@ static void add_data(lv_timer_t *timer) // Timer callback to add data to the cha
 {
     lv_obj_t *chart = timer->user_data;                                                                        // Get the chart associated with the timer 
     lv_chart_set_next_value2(chart, lv_chart_get_series_next(chart, NULL), lv_rand(0, 200), lv_rand(0, 1000)); // Add random data to the chart 
-}
-
-// This demo UI is adapted from LVGL official example: https://docs.lvgl.io/master/examples.html#scatter-chart
-void example_lvgl_demo_ui() // LVGL demo UI initialization function 
-{
-    lv_obj_t *scr = lv_scr_act();                                              // Get the current active screen 
-    lv_obj_t *chart = lv_chart_create(scr);                                    // Create a chart object 
-    lv_obj_set_size(chart, 200, 150);                                          // Set chart size 
-    lv_obj_align(chart, LV_ALIGN_CENTER, 0, 0);                                // Center the chart on the screen 
-    lv_obj_add_event_cb(chart, draw_event_cb, LV_EVENT_DRAW_PART_BEGIN, NULL); // Add draw event callback 
-    lv_obj_set_style_line_width(chart, 0, LV_PART_ITEMS);                      /* Remove chart lines  */
-
-    lv_chart_set_type(chart, LV_CHART_TYPE_SCATTER); // Set chart type to scatter 
-
-    lv_chart_set_axis_tick(chart, LV_CHART_AXIS_PRIMARY_X, 5, 5, 5, 1, true, 30);  // Set X-axis ticks 
-    lv_chart_set_axis_tick(chart, LV_CHART_AXIS_PRIMARY_Y, 10, 5, 6, 5, true, 50); // Set Y-axis ticks 
-
-    lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_X, 0, 200);  // Set X-axis range 
-    lv_chart_set_range(chart, LV_CHART_AXIS_PRIMARY_Y, 0, 1000); // Set Y-axis range 
-
-    lv_chart_set_point_count(chart, 50); // Set the number of points in the chart 
-
-    lv_chart_series_t *ser = lv_chart_add_series(chart, lv_palette_main(LV_PALETTE_RED), LV_CHART_AXIS_PRIMARY_Y); // Add a series to the chart 
-    for (int i = 0; i < 50; i++)
-    {                                                                            // Add random points to the chart 
-        lv_chart_set_next_value2(chart, ser, lv_rand(0, 200), lv_rand(0, 1000)); // Set X and Y values 
-    }
-
-    lv_timer_create(add_data, 100, chart); // Create a timer to add new data every 100ms 
 }

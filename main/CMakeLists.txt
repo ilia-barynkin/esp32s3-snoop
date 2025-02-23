@@ -1,5 +1,5 @@
 idf_component_register(
-    SRCS "port_ch422g.c" "controller_can.c" "controller_uart.c" "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "ring_buffer.c" "model.c"
+    SRCS "controller_can.c" "controller_uart.c" "waveshare_rgb_lcd_port.c" "main.c" "lvgl_port.c" "ring_buffer.c" "model.c" "esp_io_expander_ch422g.c" "esp_io_expander.c"
     INCLUDE_DIRS "." "./ui"
     REQUIRES driver)
 

@@ -5,8 +5,6 @@
 #include "driver/twai.h"
 #include "ring_buffer.h"
 
-// #define TEST_CAN_LOOPBACK
-
 extern QueueHandle_t can_tx_queue;
 extern QueueHandle_t can_rx_queue;
 

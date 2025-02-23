@@ -7,7 +7,7 @@ ring_buffer_t transaction_ring_buffer;
 uint32_t LV_EVENT_CAN_RECV = 0;
 
 static void model_init(void) {
-    ui_update_queue = xQueueCreate(1, sizeof(can_extended_message_t));
+    ui_update_queue = xQueueCreate(10, sizeof(can_extended_message_t));
     
     LV_EVENT_CAN_RECV = lv_event_register_id();
 
@@ -26,9 +26,15 @@ void model_task(void *pvParameters) {
             if (ulNotificationValue & (1 << 0)) { // UI request 
                 can_extended_message_t msg_to_send;
                 if (xQueueReceive(ui_update_queue, &msg_to_send, 0) == pdPASS) {
+                    //TODO: "inheritance"
+                    twai_message_t raw_msg = {
+                        .identifier = msg_to_send.identifier,
+                        .data_length_code = msg_to_send.data_length_code,
+                        .flags = TWAI_MSG_FLAG_NONE
+                    };
                     ESP_LOGI("CAN_UI", "Request from UI to send CAN message: %lu", msg_to_send.identifier);
                     ring_buffer_add(&transaction_ring_buffer, msg_to_send.identifier, msg_to_send.ui_event_ref);
-                    SEND_TO_QUEUE(can_tx_queue, msg_to_send);
+                    SEND_TO_QUEUE(can_tx_queue, raw_msg);
                 }
             }
             if (ulNotificationValue & (1 << 1)) { // CAN response
@@ -52,7 +58,7 @@ void notify_model_ui_event(can_extended_message_t *msg) {
     xTaskNotify(model_task_handle, (1 << 0), eSetBits);
 }
 
-void notify_model_can_response(can_extended_message_t *msg) {
+void notify_model_can_response(twai_message_t *msg) {
     xQueueSend(can_rx_queue, msg, portMAX_DELAY);
     xTaskNotify(model_task_handle, (1 << 1), eSetBits);
 }

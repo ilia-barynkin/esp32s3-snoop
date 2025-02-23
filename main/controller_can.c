@@ -1,6 +1,7 @@
 #include "controller_can.h"
 #include "model.h"
 #include "ui/ui_model_bridge.h"
+#include "esp_io_expander_ch422g.h"
 
 QueueHandle_t can_tx_queue = NULL;
 QueueHandle_t can_tx_status_queue = NULL;
@@ -37,11 +38,13 @@ static void log_twai_status() {
     ESP_LOGI("TWAI", " ==== TWAI Status: ==== ");
 }
 
+//#define TEST_CAN_LOOPBACK
+
 static void controller_can_init(void) {
 #ifdef TEST_CAN_LOOPBACK
     twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(19, 20, TWAI_MODE_NO_ACK);
 #else
-    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(19, 20, TWAI_MODE_NORMAL);
+    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(20, 21, TWAI_MODE_NORMAL);
 #endif
     twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS();
     twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
@@ -79,26 +82,22 @@ static void controller_can_init(void) {
 }
 
 void controller_can_tx_task(void *pvParameters) {
-    can_extended_message_t ext_message;
+    twai_message_t msg;
     can_tx_status_t tx_status;
     ESP_LOGI("CAN", "CAN task started");
 
     while (1) {
-        if (xQueueReceive(can_tx_queue, &ext_message, portMAX_DELAY) == pdPASS) {
+        if (xQueueReceive(can_tx_queue, &msg, portMAX_DELAY) == pdPASS) {
             log_twai_status();
 
-            twai_message_t msg = {
-                .identifier = ext_message.identifier,
-                .data_length_code = ext_message.data_length_code,
-                #ifdef TEST_CAN_LOOPBACK
-                .flags = TWAI_MSG_FLAG_SELF,
-                #endif
-                .flags = TWAI_MSG_FLAG_NONE
-            };
+            #ifdef TEST_CAN_LOOPBACK
+            msg.flags = TWAI_MSG_FLAG_SELF;
+            #else
+            msg.flags = TWAI_MSG_FLAG_NONE;
+            #endif
 
-            memcpy(msg.data, ext_message.data, ext_message.data_length_code);
-
-            ESP_LOGI("CAN_TX", "Sending message ID=0x%lu", ext_message.identifier);
+            ESP_LOGI("CAN_TX", "Sending message ID=0x%lu", msg.identifier);
+            esp_io_expander_set_level(ch422g_handle, 0x20, 1);
             esp_err_t err = twai_transmit(&msg, pdMS_TO_TICKS(1000));
             tx_status.message_id = msg.identifier;
             tx_status.status = err;
@@ -135,14 +134,10 @@ void can_tx_status_task(void *pvParameters) {
 
 void controller_can_rx_task(void *pvParameters) {
     twai_message_t received_msg;
-    can_extended_message_t ext_msg;
     while (1) {
         if (twai_receive(&received_msg, portMAX_DELAY) == ESP_OK) {
             ESP_LOGI("CAN RX", "CAN message received ID=0x%lu", received_msg.identifier);
-            ext_msg.identifier = received_msg.identifier;
-            ext_msg.data_length_code = received_msg.data_length_code;
-            memcpy(ext_msg.data, received_msg.data, received_msg.data_length_code);
-            notify_model_can_response(&ext_msg);
+            notify_model_can_response(&received_msg);
         }
     }
 }

@@ -12,6 +12,9 @@
 #include "esp_lcd_touch_gt911.h"
 #include "lv_demos.h"
 #include "lvgl_port.h"
+#include "esp_io_expander_ch422g.h"
+
+extern uint32_t exio_state;
 
 #define I2C_MASTER_SCL_IO           9       /*!< GPIO number used for I2C master clock */
 #define I2C_MASTER_SDA_IO           8       /*!< GPIO number used for I2C master data  */

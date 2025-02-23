@@ -16,7 +16,7 @@ extern TaskHandle_t model_task_handle;
 void model_start(void);
 void model_task(void *pvParameters);
 void notify_model_ui_event(can_extended_message_t *msg);
-void notify_model_can_response(can_extended_message_t *msg);
+void notify_model_can_response(twai_message_t *msg);
 void can_task(void *pvParameters);
 
 #endif
