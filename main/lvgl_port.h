@@ -154,6 +154,12 @@ void lvgl_port_unlock(void);
  */
 bool lvgl_port_notify_rgb_vsync(void);
 
+#define LOG_BUF_SIZE 256
+typedef struct {
+    const char buf[LOG_BUF_SIZE];
+    uint32_t len;
+} log_entry_t;
+
 #ifdef __cplusplus
 }
 #endif

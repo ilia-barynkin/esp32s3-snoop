@@ -484,9 +484,37 @@ static esp_err_t tick_init(void)
     return esp_timer_start_periodic(lvgl_tick_timer, LVGL_PORT_TICK_PERIOD_MS * 1000); // Start the timer
 }
 
+static void log_add_text(void * log_entry) {
+    log_entry_t * log = (log_entry_t *)log_entry;
+    char txt[log->len + 1];
+    memcpy(txt, log->buf, log->len);
+    txt[log->len] = '\0';
+    lv_textarea_add_text(ui_LogTextArea, txt);
+}
+
+// Наша функция vprintf для перенаправления логов
+static int lvgl_vprintf(const char * format, va_list args)
+{
+    static log_entry_t log_entry;
+    int len = vsnprintf(log_entry.buf, LOG_BUF_SIZE, format, args);
+
+    if(len > 0) {
+        if(len >= LOG_BUF_SIZE) {
+            assert(0);
+        }
+    
+        log_entry.len = len;
+        lv_async_call(log_add_text, &log_entry);
+    }
+    // stdout:
+    vprintf(format, args);
+    return len;
+}
+
 static void lvgl_port_task(void *arg)
 {
     ui_init();
+    esp_log_set_vprintf(lvgl_vprintf);
     ESP_LOGD(TAG, "Starting LVGL task"); // Log the task start
 
     uint32_t task_delay_ms = LVGL_PORT_TASK_MAX_DELAY_MS; // Set initial task delay

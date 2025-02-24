@@ -21,7 +21,7 @@ extern lv_obj_t * ui_Screen1;
 void ui_event_Button1(lv_event_t * e);
 extern lv_obj_t * ui_Button1;
 extern lv_obj_t * ui_Label;
-
+extern lv_obj_t * ui_LogTextArea;
 // CUSTOM VARIABLES
 
 // EVENTS
